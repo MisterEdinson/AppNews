@@ -1,13 +1,15 @@
 package com.example.appnews
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.appnews.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     private var binding : ActivityMainBinding? = null
@@ -15,14 +17,16 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(R.layout.fragment_splash)
-        Handler(Looper.myLooper()!!).postDelayed({
+
+        CoroutineScope(Dispatchers.Main).launch {
+            delay(5000)
+            binding = ActivityMainBinding.inflate(layoutInflater)
             setContentView(mbinding.root)
             btmNavView.setupWithNavController(
                 navController = nav_host_fragment.findNavController()
             )
-        }, 3000)
+        }
     }
 
     override fun onDestroy() {
