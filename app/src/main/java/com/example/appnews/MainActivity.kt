@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.fragment_splash)
 
         CoroutineScope(Dispatchers.Main).launch {
-            delay(5000)
+            delay(2000)
             binding = ActivityMainBinding.inflate(layoutInflater)
             setContentView(mbinding.root)
             btmNavView.setupWithNavController(

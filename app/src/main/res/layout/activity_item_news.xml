@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="16dp"
+    android:background="@drawable/bg_circuite"
     >
 
   <ImageView
@@ -29,19 +30,19 @@
       android:text="@string/item_head_text"
       android:textSize="16sp"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.0"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/imgItemHeader" />
+      app:layout_constraintTop_toBottomOf="@id/imgItemHeader" />
 
   <TextView
       android:id="@+id/tvItemAuth"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginTop="8dp"
+      android:paddingBottom="18dp"
       android:text="@string/item_auth_text"
-      app:layout_constraintEnd_toEndOf="@+id/tvItemHeader"
-      app:layout_constraintHorizontal_bias="0.0"
-      app:layout_constraintStart_toStartOf="@+id/tvItemHeader"
-      app:layout_constraintTop_toBottomOf="@+id/tvItemHeader" />
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="@id/tvItemHeader"
+      app:layout_constraintStart_toStartOf="@id/tvItemHeader"
+      app:layout_constraintTop_toBottomOf="@id/tvItemHeader" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

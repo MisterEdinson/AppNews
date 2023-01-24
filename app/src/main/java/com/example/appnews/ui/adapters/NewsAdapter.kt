@@ -11,10 +11,10 @@ import com.example.appnews.R
 import com.example.appnews.models.Article
 import kotlinx.android.synthetic.main.activity_item_news.view.*
 
-class NewsAdapter:RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
-    class NewsViewHolder(view: View):RecyclerView.ViewHolder(view)
+class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
+    class NewsViewHolder(view: View) : RecyclerView.ViewHolder(view)
 
-    private val callback = object: DiffUtil.ItemCallback<Article>(){
+    private val callback = object : DiffUtil.ItemCallback<Article>() {
         override fun areItemsTheSame(oldItem: Article, newItem: Article): Boolean {
             return oldItem.url == newItem.url
         }
@@ -24,12 +24,13 @@ class NewsAdapter:RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
         }
     }
 
-    val differ = AsyncListDiffer(this,callback)
+    val differ = AsyncListDiffer(this, callback)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
         return NewsViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.
-            activity_item_news,parent,false)
+            LayoutInflater.from(parent.context).inflate(
+                R.layout.activity_item_news, parent, false
+            )
         )
     }
 

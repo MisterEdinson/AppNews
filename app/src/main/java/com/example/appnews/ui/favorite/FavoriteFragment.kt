@@ -1,22 +1,22 @@
-package com.example.appnews.ui.splash
+package com.example.appnews.ui.favorite
 
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import com.example.appnews.databinding.FragmentSplashBinding
+import com.example.appnews.databinding.FragmentFavoriteBinding
 
-class SplashFragment : Fragment() {
+class FavoriteFragment : Fragment() {
 
-    private var binding: FragmentSplashBinding? = null
+    private var binding : FragmentFavoriteBinding? = null
     private val mbinding get() = binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentSplashBinding.inflate(layoutInflater, container, false)
+        binding = FragmentFavoriteBinding.inflate(layoutInflater,container,false)
         return mbinding.root
     }
 }
