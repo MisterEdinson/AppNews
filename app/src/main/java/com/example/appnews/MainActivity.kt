@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
             binding = ActivityMainBinding.inflate(layoutInflater)
             setContentView(mbinding.root)
             btmNavView.setupWithNavController(
-                navController = nav_host_fragment.findNavController()
+                nav_host_fragment.findNavController()
             )
         }
     }

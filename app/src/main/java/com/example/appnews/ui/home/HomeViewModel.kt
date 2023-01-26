@@ -16,19 +16,19 @@ class HomeViewModel @Inject constructor(private val repository: NewsRepository) 
     var newsPage = 1
 
     init {
-        getNews(countryCode = "ua")
+        getNews("ua")
     }
 
     fun getNews(countryCode: String) =
         viewModelScope.launch {
             newsLiveData.postValue(Resource.Loading())
-            val responcse = repository.getNews(countryCode = countryCode, pageNumber = newsPage)
+            val responcse = repository.getNews(countryCode, newsPage)
             if (responcse.isSuccessful) {
                 responcse.body().let { res ->
                     newsLiveData.postValue(Resource.Success(res))
                 }
             } else {
-                newsLiveData.postValue(Resource.Error(message = responcse.message()))
+                newsLiveData.postValue(Resource.Error(responcse.message()))
             }
         }
 }

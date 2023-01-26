@@ -1,19 +1,27 @@
 package com.example.appnews.ui.home
 
+import android.content.ClipData
 import android.os.Bundle
 import android.text.Editable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.appnews.R
 import com.example.appnews.databinding.FragmentHomeBinding
 import com.example.appnews.ui.adapters.NewsAdapter
 import com.example.appnews.utils.Resource
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.activity_item_news.*
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.MainScope
@@ -39,6 +47,8 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initAdapter()
+
+
         var job: Job? = null
         etSearchHome.addTextChangedListener { text: Editable? ->
             job?.cancel()

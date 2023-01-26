@@ -5,13 +5,13 @@ import javax.inject.Inject
 class NewsRepository @Inject constructor(private val newsService: ApiService) {
     //all news
     suspend fun getNews(countryCode: String, pageNumber: Int) =
-        newsService.getHeadLines(countryCode = countryCode, page = pageNumber)
+        newsService.getHeadLines(countryCode, pageNumber)
 
     //search
     suspend fun searchNews(query: String, pageNumber: Int) =
-        newsService.getEveryThing(query = query, page = pageNumber)
+        newsService.getEveryThing(query, pageNumber)
 
     //favorite
     suspend fun favoriteNews(query: String, pageNumber: Int) =
-        newsService.getEveryThing(query = query, page = pageNumber)
+        newsService.getEveryThing(query, pageNumber)
 }

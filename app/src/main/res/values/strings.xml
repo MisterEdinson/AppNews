@@ -10,4 +10,8 @@
     <string name="menu_home">Home</string>
     <string name="bookmarks"><b>BOOKMARKS</b></string>
     <string name="detail">detail</string>
+    <string name="back">Back</string>
+    <string name="cnn"><b>CNN</b></string>
+    <string name="world">World</string>
+    <string name="news_app"><b>NEWS APP</b></string>
 </resources>

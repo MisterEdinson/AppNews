@@ -15,6 +15,7 @@ class DetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
         binding = FragmentDetailBinding.inflate(layoutInflater, container, false)
         return mbinding.root
     }
