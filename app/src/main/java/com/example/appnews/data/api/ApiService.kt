@@ -9,15 +9,15 @@ import retrofit2.http.Query
 interface ApiService {
     @GET("v2/everything")
     suspend fun getEveryThing(
-        @Query("q") query :String,
-        @Query("page") page :Int = 1,
-        @Query("apikey") apiKey :String = API_KEY,
+        @Query("q") query: String,
+        @Query("page") page: Int = 1,
+        @Query("apikey") apiKey: String = API_KEY,
     ): Response<Model>
 
     @GET("/v2/top-headlines")
     suspend fun getHeadLines(
-        @Query("country") countryCode :String = "",
-        @Query("page") page :Int = 1,
-        @Query("apikey") apiKey :String = API_KEY,
+        @Query("country") countryCode: String = "",
+        @Query("page") page: Int = 1,
+        @Query("apikey") apiKey: String = API_KEY,
     ): Response<Model>
 }

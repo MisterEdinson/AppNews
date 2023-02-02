@@ -1,6 +1,5 @@
 package com.example.appnews.ui.home
 
-import android.content.ClipData
 import android.os.Bundle
 import android.text.Editable
 import android.util.Log
@@ -11,17 +10,14 @@ import androidx.core.os.bundleOf
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.appnews.R
 import com.example.appnews.databinding.FragmentHomeBinding
+import com.example.appnews.models.Article
 import com.example.appnews.ui.adapters.NewsAdapter
 import com.example.appnews.utils.Resource
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.activity_item_news.*
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.MainScope
@@ -84,10 +80,23 @@ class HomeFragment : Fragment() {
     }
 
     private fun initAdapter() {
-        newsAdapter = NewsAdapter()
+        newsAdapter = NewsAdapter(
+            { article -> openFragmentDetails(article) },
+            { article -> addFavoriteNews(article) }
+        )
         rvHome.apply {
             adapter = newsAdapter
             layoutManager = LinearLayoutManager(activity)
         }
     }
+
+    private fun openFragmentDetails(article: Article) {
+        val bundle = bundleOf("article" to article)
+        findNavController().navigate(R.id.action_homeFragment_to_detailFragment, bundle)
+    }
+
+    private fun addFavoriteNews(article: Article) {
+        viewModel.addFavorite(article)
+    }
+
 }

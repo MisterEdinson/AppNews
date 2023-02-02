@@ -8,7 +8,7 @@
     tools:context=".ui.detail.DetailFragment">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/btnBackDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -24,9 +24,9 @@
         android:layout_marginStart="16dp"
         android:textColor="@color/black"
         android:text="@string/back"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toTopOf="@+id/imageView2" />
+        app:layout_constraintBottom_toBottomOf="@+id/btnBackDetails"
+        app:layout_constraintStart_toEndOf="@+id/btnBackDetails"
+        app:layout_constraintTop_toTopOf="@+id/btnBackDetails" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout4"
@@ -37,7 +37,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2">
+        app:layout_constraintTop_toBottomOf="@+id/btnBackDetails">
 
         <ImageView
             android:id="@+id/imageView4"
@@ -96,7 +96,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView8"
+            android:id="@+id/tvDetailHeader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -119,10 +119,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView9" />
+            app:layout_constraintTop_toBottomOf="@+id/tvDetailFrom" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/imgDetail"
             android:layout_width="match_parent"
             android:layout_height="233dp"
             android:layout_marginStart="16dp"
@@ -136,17 +136,17 @@
             app:layout_constraintTop_toBottomOf="@+id/view" />
 
         <TextView
-            android:id="@+id/textView9"
+            android:id="@+id/tvDetailFrom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="From CNN’s Tim Lister and Julia Kesaeva"
-            app:layout_constraintStart_toStartOf="@+id/textView8"
-            app:layout_constraintTop_toBottomOf="@+id/textView8" />
+            app:layout_constraintStart_toStartOf="@+id/tvDetailHeader"
+            app:layout_constraintTop_toBottomOf="@+id/tvDetailHeader" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/tvDetailDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -160,4 +160,14 @@ Ukrainian officials on Monday reported rocket and artillery attacks against the 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/constraintLayout3"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
+
+    <Button
+        android:id="@+id/btnClickWeb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="WEBSITE"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDetailDescription" />
 </androidx.constraintlayout.widget.ConstraintLayout>

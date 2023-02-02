@@ -11,9 +11,10 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-    private var binding : ActivityMainBinding? = null
+    private var binding: ActivityMainBinding? = null
     private val mbinding get() = binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {

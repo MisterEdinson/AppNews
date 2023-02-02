@@ -1,10 +1,15 @@
 package com.example.appnews.di
 
+import android.content.Context
+import androidx.room.Room
 import com.example.appnews.data.api.ApiService
+import com.example.appnews.data.db.ArticleDao
+import com.example.appnews.data.db.ArticleDataBase
 import com.example.appnews.utils.Constants.Companion.BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -33,4 +38,17 @@ object AppModule {
             .client(okHttpClient())
             .build()
             .create(ApiService::class.java)
+    @Provides
+    @Singleton
+    fun provideArticleDataBase(@ApplicationContext context:Context) =
+        Room.databaseBuilder(
+            context,
+            ArticleDataBase::class.java,
+            "article_database"
+        ).build()
+
+    @Provides
+    fun provideArticleDao(appDataBase : ArticleDataBase): ArticleDao{
+        return appDataBase.getArticleDao()
+    }
 }
