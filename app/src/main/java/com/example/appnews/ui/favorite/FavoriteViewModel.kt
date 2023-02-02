@@ -1,5 +1,6 @@
 package com.example.appnews.ui.favorite
 
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -33,5 +34,12 @@ class FavoriteViewModel @Inject constructor(private val repository: NewsReposito
         viewModelScope.launch {
             repository.getFavoriteArticles()
         }
+    }
+
+    fun delFavoriteDB(article: Article){
+        viewModelScope.launch {
+            repository.deleteFromFavorite(article = article)
+        }
+
     }
 }

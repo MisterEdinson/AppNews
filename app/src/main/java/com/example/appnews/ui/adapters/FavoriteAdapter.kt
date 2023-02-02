@@ -3,22 +3,20 @@ package com.example.appnews.ui.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.appnews.R
-import com.example.appnews.data.db.ArticleDao
-import com.example.appnews.data.db.ArticleDataBase
 import com.example.appnews.models.Article
 import kotlinx.android.synthetic.main.activity_item_news.view.*
 
 class FavoriteAdapter(
-    val getFavorit: (Article) -> Unit
+    val delFavoriteNews: (Article) -> Unit,
+    val onClick: (Article) -> Unit,
+    val refreshPage: (Article) -> Unit
 ) : RecyclerView.Adapter<FavoriteAdapter.FavoriteNewsHolder>() {
-    private var favoriteNews = emptyList<Article>()
-    var favoriteDB = mutableListOf<Article>()
-
     class FavoriteNewsHolder(view: View) : RecyclerView.ViewHolder(view)
 
     private val callback = object : DiffUtil.ItemCallback<Article>() {
@@ -42,15 +40,25 @@ class FavoriteAdapter(
     }
 
     override fun onBindViewHolder(holder: FavoriteNewsHolder, position: Int) {
-        val article = favoriteDB[position]
+        val article = differ.currentList[position]
         holder.itemView.apply {
             Glide.with(this).load(article.urlToImage).into(imgItemHeader)
             imgItemHeader.clipToOutline = true
             tvItemHeader.text = article.title
             tvItemAuth.text = article.author ?: "NEWS CNN"
+
+            imgClickDetails.setOnClickListener {
+                onClick(article)
+            }
+            imgAddFavorite.setOnClickListener {
+                delFavoriteNews(article)
+                refreshPage(article)
+            }
         }
     }
 
-    override fun getItemCount() = favoriteNews.size
+    override fun getItemCount() = differ.currentList.size
 
 }
+
+

@@ -11,7 +11,6 @@ import com.example.appnews.R
 import com.example.appnews.models.Article
 import kotlinx.android.synthetic.main.activity_item_news.view.*
 
-
 class NewsAdapter(
     val onClick: (Article) -> Unit,
     val addFavoriteNews: (Article) -> Unit
