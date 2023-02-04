@@ -1,6 +1,5 @@
 package com.example.appnews.ui.home
 
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -15,7 +14,7 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(private val repository: NewsRepository) : ViewModel() {
     val newsLiveData: MutableLiveData<Resource<Model>> = MutableLiveData()
-    var newsPage = 1
+    private var newsPage = 1
 
     init {
         getNews("ua")
@@ -24,13 +23,13 @@ class HomeViewModel @Inject constructor(private val repository: NewsRepository) 
     fun getNews(countryCode: String) =
         viewModelScope.launch {
             newsLiveData.postValue(Resource.Loading())
-            val responcse = repository.getNews(countryCode, newsPage)
-            if (responcse.isSuccessful) {
-                responcse.body().let { res ->
+            val response = repository.getNews(countryCode, newsPage)
+            if (response.isSuccessful) {
+                response.body().let { res ->
                     newsLiveData.postValue(Resource.Success(res))
                 }
             } else {
-                newsLiveData.postValue(Resource.Error(responcse.message()))
+                newsLiveData.postValue(Resource.Error(response.message()))
             }
         }
 

@@ -10,13 +10,13 @@ import com.example.appnews.databinding.FragmentSplashBinding
 class SplashFragment : Fragment() {
 
     private var binding: FragmentSplashBinding? = null
-    private val mbinding get() = binding!!
+    private val _binding get() = binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentSplashBinding.inflate(layoutInflater, container, false)
-        return mbinding.root
+        return _binding.root
     }
 }

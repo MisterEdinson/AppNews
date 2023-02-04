@@ -27,17 +27,17 @@ import kotlinx.coroutines.launch
 class HomeFragment : Fragment() {
 
     private var binding: FragmentHomeBinding? = null
-    private val mbinding get() = binding!!
+    private val _binding get() = binding!!
 
     private val viewModel by viewModels<HomeViewModel>()
-    lateinit var newsAdapter: NewsAdapter
+    private var newsAdapter : NewsAdapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
-        return mbinding.root
+        return _binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -58,22 +58,22 @@ class HomeFragment : Fragment() {
                 }
             }
         }
-        viewModel.newsLiveData.observe(viewLifecycleOwner) { responce ->
-            when (responce) {
+        viewModel.newsLiveData.observe(viewLifecycleOwner) { response ->
+            when (response) {
                 is Resource.Success -> {
-                    responce.data?.let {
-                        progBarNews.setVisibility(View.INVISIBLE)
-                        newsAdapter.differ.submitList(it.articles)
+                    response.data?.let {
+                        progBarNews.visibility = View.INVISIBLE
+                        newsAdapter?.differ?.submitList(it.articles)
                     }
                 }
                 is Resource.Error -> {
                     //need progress bar hidden
-                    responce.data?.let {
-                        Log.e("check data", "Home fragment: error : ${it}")
+                    response.data?.let {
+                        Log.e("check data", "Home fragment: error : $it")
                     }
                 }
                 is Resource.Loading -> {
-                    progBarNews.setVisibility(View.VISIBLE)
+                    progBarNews.visibility = View.VISIBLE
                 }
             }
         }

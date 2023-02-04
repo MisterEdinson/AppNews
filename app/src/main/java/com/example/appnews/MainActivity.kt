@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private var binding: ActivityMainBinding? = null
-    private val mbinding get() = binding!!
+    private val _binding get() = binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         CoroutineScope(Dispatchers.Main).launch {
             delay(2000)
             binding = ActivityMainBinding.inflate(layoutInflater)
-            setContentView(mbinding.root)
+            setContentView(_binding.root)
             btmNavView.setupWithNavController(
                 nav_host_fragment.findNavController()
             )
